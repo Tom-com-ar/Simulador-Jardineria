@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Simulador de Jardinería</title>
+</head>
+<body>
+
+    <div class="barra-navegacion">
+        <a href="#" id="agregar-cliente-btn">Agregar Cliente</a>
+        <a href="#" id="asignar-recordatorio-btn">Asignar Recordatorio</a>
+        <a href="#" id="registrar-pago-btn">Registrar Pago</a>
+        <a href="#">Listar Pagos</a>
+        <a href="#">Listar Clientes</a>
+    </div>
+
+    <div class="contenido-principal">
+        <h1>Simulador de Jardinería</h1>
+        <p>Bienvenido al simulador. Selecciona una opción desde el menú para gestionar clientes, pagos y tareas.</p>
+    </div>
+
+    <!-- Ventana Modal para agregar cliente -->
+    <div id="modalAgregarCliente" class="modal">
+        <div class="contenido-modal">
+            <span class="cerrar-btn">&times;</span>
+            <h2>Agregar Cliente</h2>
+            <form id="formAgregarCliente">
+                <label for="nombre-cliente">Nombre:</label>
+                <input type="text" id="nombre-cliente" name="nombre-cliente" required>
+
+                <label for="apellido-cliente">Apellido:</label>
+                <input type="text" id="apellido-cliente" name="apellido-cliente" required>
+
+                <label for="localidad-cliente">Localidad:</label>
+                <input type="text" id="localidad-cliente" name="localidad-cliente" required>
+
+                <label for="telefono-cliente">Teléfono:</label>
+                <input type="tel" id="telefono-cliente" name="telefono-cliente" required>
+
+                <label for="direccion-cliente">Dirección:</label>
+                <input type="text" id="direccion-cliente" name="direccion-cliente" required>
+
+                <button type="submit">Guardar Cliente</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Ventana Modal para asignar recordatorio -->
+    <div id="modalAsignarRecordatorio" class="modal">
+        <div class="contenido-modal">
+            <span class="cerrar-btn">&times;</span>
+            <h2>Asignar Recordatorio</h2>
+            <form id="formAsignarRecordatorio">
+                <label for="fecha-recordatorio">Fecha:</label>
+                <input type="date" id="fecha-recordatorio" required>
+
+                <label for="descripcion-recordatorio">Descripción:</label>
+                <select id="descripcion-recordatorio" required>
+                    <option value="">Seleccionar...</option>
+                    <option value="mantenimiento">Mantenimiento</option>
+                    <option value="poda">Poda</option>
+                    <option value="visitarLugar">Visitar Lugar</option>
+                    <option value="colocacionCesped">Colocación de Césped</option>
+                </select>
+
+                <label for="seleccionar-cliente">Cliente:</label>
+                <select id="seleccionar-cliente" required>
+                    <!-- Se llenará dinámicamente -->
+                </select>
+
+                <button type="submit">Asignar Recordatorio</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Ventana Modal para registrar pago -->
+    <div id="modalRegistrarPago" class="modal">
+        <div class="contenido-modal">
+            <span class="cerrar-btn">&times;</span>
+            <h2>Registrar Pago</h2>
+            <form id="formRegistrarPago">
+                <label for="seleccionar-cliente-pago">Cliente:</label>
+                <select id="seleccionar-cliente-pago" name="seleccionar-cliente-pago" required>
+                    <!-- Los clientes se cargarán dinámicamente -->
+                </select>
+
+                <label for="monto-pago">Monto:</label>
+                <input type="number" id="monto-pago" name="monto-pago" required min="1">
+
+                <label for="metodo-pago">Método de Pago:</label>
+                <select id="metodo-pago" name="metodo-pago" required>
+                    <option value="">Seleccionar...</option>
+                    <option value="efectivo">Efectivo</option>
+                    <option value="transferencia">Transferencia</option>
+                    <option value="tarjeta">Tarjeta</option>
+                </select>
+
+                <label for="fecha-pago">Fecha:</label>
+                <input type="date" id="fecha-pago" name="fecha-pago" required>
+
+                <label for="concepto-pago">Concepto:</label>
+                <input type="text" id="concepto-pago" name="concepto-pago" required>
+
+                <button type="submit">Registrar Pago</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tabla para mostrar los clientes -->
+    <div class="contenedor-tabla">
+        <table id="tablaClientes">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Localidad</th>
+                    <th>Teléfono</th>
+                    <th>Dirección</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los datos de los clientes se agregarán aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Tabla para mostrar los recordatorios -->
+    <div class="contenedor-tabla">
+        <table id="tablaRecordatorios">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Descripción</th>
+                    <th>Cliente</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los recordatorios se agregarán aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Tabla para mostrar los pagos -->
+    <div class="contenedor-tabla">
+        <table id="tablaPagos">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Fecha</th>
+                    <th>Concepto</th>
+                    <th>Monto</th>
+                    <th>Método de Pago</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los pagos se agregarán aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="simulador.js"></script>
+</body>
+</html>
